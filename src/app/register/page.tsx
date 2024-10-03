@@ -63,8 +63,6 @@ export default function Register() {
 
     if (isValid) {
       setIsLoading(true);
-      // const toastId = toast.loading("Loading...");
-
       try {
         const res = await fetch("http://localhost:8000/api/trainers", {
           method: "POST",
@@ -72,24 +70,16 @@ export default function Register() {
           body: JSON.stringify({ name, email, password }),
         });
 
-        const { success, message } = await res.json();
-
-        // toast.dismiss(toastId);
+        const { success } = await res.json();
         setIsLoading(false);
-
         if (success) {
-          // toast.success("Registration successful!");
-          // router.replace("/register-succes");
           router.replace("/login");
-          // if (typeof window !== 'undefined') {
-          //   window.location.reload();
-          // }
-        } else {
-          // toast.error(message || "User already exists.");
+         
         }
       } catch (error) {
-        // toast.dismiss(toastId);
-        // toast.error("Registration failed. Please try again.");
+
+        console.log(error);
+     
         setIsLoading(false);
       }
     }

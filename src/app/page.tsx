@@ -9,12 +9,16 @@ export default function Home() {
   const [isAdmin, setIsAdmin] = useState(false);
   const [loading, setLoading] = useState(true);
 
+  // Usage in a component
   useEffect(() => {
     const { isLoggedIn, role } = checkLoginStatus();
+
+    console.log("role",role);
     setIsLoggedIn(isLoggedIn);
     setIsAdmin(role === 'admin');
     setLoading(false);
   }, []);
+
 
   if (loading) {
     return <div>Loading...</div>; // Show loading state
@@ -97,15 +101,15 @@ export default function Home() {
                         >
                           Admission
                         </a>
-                      
+
                       </div>
                     </div>
                     <div className="mt-14 flex justify-end gap-8 sm:-mt-44 sm:justify-start sm:pl-20 lg:mt-0 lg:pl-0">
                       <div className="ml-auto w-44 flex-none space-y-8 pt-32 sm:ml-0 sm:pt-80 lg:order-last lg:pt-36 xl:order-none xl:pt-80">
                         <div className="relative">
                           <Image
-                          width={400}
-                          height={400}
+                            width={400}
+                            height={400}
                             alt=""
                             src="https://plus.unsplash.com/premium_photo-1661265933107-85a5dbd815af?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Ym9keWJ1aWxkaW5nfGVufDB8fDB8fHww"
                             className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
@@ -116,8 +120,8 @@ export default function Home() {
                       <div className="mr-auto w-44 flex-none space-y-8 sm:mr-0 sm:pt-52 lg:pt-36">
                         <div className="relative">
                           <Image
-                           width={400}
-                           height={400}
+                            width={400}
+                            height={400}
                             alt=""
                             src="https://ironbullstrength.com/cdn/shop/articles/bodybuilding-equiupments-you-must-have_520x500_93a9cd44-733a-4355-9b73-0adb7fe0f7aa.webp?v=1690890453"
                             className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
@@ -126,8 +130,8 @@ export default function Home() {
                         </div>
                         <div className="relative">
                           <Image
-                           width={400}
-                           height={400}
+                            width={400}
+                            height={400}
                             alt=""
                             src="https://myxperiencefitness.com/wp-content/uploads/2019/05/April-20-feature-photo.jpg.webp"
                             className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
@@ -138,8 +142,8 @@ export default function Home() {
                       <div className="w-44 flex-none space-y-8 pt-32 sm:pt-0">
                         <div className="relative">
                           <Image
-                           width={400}
-                           height={400}
+                            width={400}
+                            height={400}
                             alt=""
                             src="https://c8.alamy.com/comp/2PYGPBC/fitness-kettlebell-and-woman-in-gym-with-exercise-portrait-strong-and-weightlifting-and-body-builder-body-workout-training-and-body-building-with-muscle-and-happy-athlete-sports-motivation-2PYGPBC.jpg"
                             className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
@@ -148,8 +152,8 @@ export default function Home() {
                         </div>
                         <div className="relative">
                           <Image
-                           width={400}
-                           height={400}
+                            width={400}
+                            height={400}
                             alt=""
                             src="https://myxperiencefitness.com/wp-content/uploads/2019/05/April-20-feature-photo.jpg.webp"
                             className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
