@@ -77,7 +77,7 @@ export default function Login() {
       }
     } catch (error) {
       toast.dismiss(toastId);
-      toast.error("An error occurred while logging in.");
+      toast.error(error);
     } finally {
       setIsSubmitting(false);  // Reset submit state
     }
