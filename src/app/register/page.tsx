@@ -5,9 +5,6 @@
 "use client";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-// import toast, { Toaster } from "react-hot-toast";
-import Image from "next/image";
-import Logo from "../libs/logo.png";
 
 export default function Register() {
   const router = useRouter();

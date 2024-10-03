@@ -2,10 +2,7 @@
 "use client"
 import { useEffect, useState } from 'react';
 
-const people = [
-    { title: '03 Oct  2024', email: '10:00-12:00', role: '66fceba8d9041aa68bc79a51' },
-    // More people...
-]
+import Modal from "../ui/modal/modal"
 
 export default function Schedule() {
 
@@ -37,6 +34,9 @@ export default function Schedule() {
     return (
         <div className="px-4 sm:px-6 lg:px-8 pt-24">
             <div className="sm:flex sm:items-center">
+               <Modal />
+
+               
                 <div className="sm:flex-auto">
                     <h1 className="text-base font-semibold leading-6 text-gray-900">Schedules</h1>
                     <p className="mt-2 text-sm text-gray-700">

@@ -1,27 +1,13 @@
 "use client"
 import Image from 'next/image'
-// import { MagnifyingGlassIcon } from '@heroicons/react/20/solid'
-// import { PiShoppingCartSimple } from "react-icons/pi";
-// import { useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
 
-// import ProfileBar from './ProfileBar'
-// import ProfileBarAdmin from './ProfilebarAdmin'
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
-}
 const WithoutLogin = () => {
   return (
     <a
       href={"/login"}
       className="my-auto mr-1 flex flex-row items-center">
-      {/* <div
-        className=" hidden md:flex w-10 md:w-10  justify-end">
-        <Avatar>
-          <AvatarImage className="w-10 h-10 border-2 border-color2  my-auto rounded-full object-cover cursor-pointer" src={"https://images.unsplash.com/photo-1575936123452-b67c3203c357?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8fDA%3D"} alt="@shadcn" />
-        </Avatar>
-      </div> */}
+ 
       <div className=" flex w-28  h-8 items-center ">
         <h3
           className="pr-1 ml-2 text-indigo-500 font-bold cursor-pointer hover:text-color4 text-sm"
@@ -34,10 +20,7 @@ const WithoutLogin = () => {
 }
 
 export default function Navbar() {
-//   const { data: session } = useSession({ required: false });
-  const router = useRouter();
 
-  // console.log("session 100",session)
 
 
   return (

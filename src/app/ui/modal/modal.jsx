@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { Dialog, DialogBackdrop, DialogPanel, DialogTitle } from '@headlessui/react'
 import { CheckIcon } from '@heroicons/react/24/outline'
 
-export default function Example() {
+export default function Modal() {
   const [open, setOpen] = useState(true)
 
   return (

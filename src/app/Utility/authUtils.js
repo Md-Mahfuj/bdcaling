@@ -1,4 +1,6 @@
-import { decode } from 'jwt-decode';
+// import { decode } from 'jwt-decode';
+
+import { jwtDecode } from "jwt-decode";
 
 /**
  * Checks the login status of a user based on the JWT in cookies.
@@ -10,7 +12,7 @@ export const checkLoginStatus = () => {
   if (token) {
     const tokenValue = token.split('=')[1]; // Get the token value
     try {
-      const decodedToken = decode(tokenValue); // Decode the token
+      const decodedToken = jwtDecode(tokenValue); // Decode the token
       return {
         isLoggedIn: true,
         role: decodedToken.role || null, // Return the role or null if not found
