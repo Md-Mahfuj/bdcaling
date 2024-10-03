@@ -13,9 +13,6 @@ export default function Schedule() {
     const [idSend, setSend] = useState('');
 
 
-    const AddSchedul =()=>{
-        setOpen(true);
-    }
 
     useEffect(() => {
         const fetchData = async () => {

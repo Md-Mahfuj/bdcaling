@@ -1,5 +1,5 @@
 
-import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
+import {Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 
 import Image from 'next/image'
 import { signOut } from "../../Utility/SignOut"

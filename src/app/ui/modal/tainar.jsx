@@ -1,8 +1,8 @@
 'use client'
 "use client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-import { Dialog, DialogBackdrop, DialogPanel, DialogTitle } from '@headlessui/react'
+import { Dialog, DialogBackdrop, DialogPanel} from '@headlessui/react'
 import { CheckIcon } from '@heroicons/react/24/outline'
 
 export default function Modal({ open, setOpen,idSend }) {
@@ -17,7 +17,7 @@ export default function Modal({ open, setOpen,idSend }) {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({role }),
               });
-              const { success } = await res.json();
+            //   const { success } = await res.json();
 
               if (typeof window !== 'undefined') {
                 window.location.reload();

@@ -5,17 +5,7 @@ import Image from 'next/image';
 // import Person from "../libs/person.png";
 // import Modal from "../components/modal";
 
-const initialPerson = {
-    name: "Jane Doe",
-    imageUrl: "",
-    address: "123 Main St, City, Country, 12345",
-    email: "janedoe@example.com",
-    number: "+1 (123) 456-7890",
-};
-
 export default function Profile() {
-    const [person, setPerson] = useState(initialPerson);
-
 
     const [name, setName] = useState('')
     const [id, setId] = useState('')
@@ -32,11 +22,6 @@ export default function Profile() {
         setAddress(e.target.value);
     };
 
-    // Handle the button click
-    const handleClick = () => {
-        console.log('name:', name);
-    };
-
     const handleSubmit = async () => {
 
         try {
@@ -47,7 +32,7 @@ export default function Profile() {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ name,profile }),
             });
-            const { success } = await res.json();
+            // const { success } = await res.json();
 
         } catch (error) {
 
@@ -85,14 +70,6 @@ export default function Profile() {
 
         fetchData(); // Call the fetch function
     }, [id]);
-
-
-
-
-
-    const handleUpdatePerson = (updatedPerson) => {
-        setPerson(updatedPerson);
-    };
 
     return (
         <div className="py-32 sm:py-28 min-h-screen bg-white sm:bg-gray-100 flex items-center justify-center">
