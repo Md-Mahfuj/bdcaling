@@ -34,7 +34,10 @@ import { jwtDecode } from "jwt-decode";
  */
 interface LoginStatus {
   isLoggedIn: boolean;
-  role: string | null; // role can be a string or null
+  role: string | null; 
+  name?: string | null;
+  id?: string  | null;
+
 }
 
 /**
@@ -47,10 +50,13 @@ export const checkLoginStatus = (): LoginStatus => {
   if (token) {
     const tokenValue = token.split('=')[1]; // Get the token value
     try {
-      const decodedToken: { role?: string } = jwtDecode(tokenValue); // Decode the token with expected shape
+      const decodedToken: { role?: string, name?: string,id?: string  } = jwtDecode(tokenValue); // Decode the token with expected shape
       return {
         isLoggedIn: true,
-        role: decodedToken.role || null, // Return the role or null if not found
+        role: decodedToken.role || null,
+        name: decodedToken.name ||  null, 
+        id:decodedToken.id,
+       
       };
     } catch (error) {
       console.error("Failed to decode token:", error);
