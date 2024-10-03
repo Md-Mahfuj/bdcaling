@@ -31,7 +31,7 @@ export default function Login() {
   const checkLoginStatus = () => {
     const token = document.cookie.split('; ').find(row => row.startsWith('token='));
 
-    console.log("token",token);
+    // console.log("token",token);
     if (token) {
       setIsLoggedIn(true);  // User is logged in
     } else {
