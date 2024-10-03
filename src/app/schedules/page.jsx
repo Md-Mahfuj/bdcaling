@@ -7,25 +7,22 @@ import Modal from "../ui/modal/modal"
 export default function Schedule() {
 
     const [data, setData] = useState([]);
-    const [loading, setLoading] = useState(true);
+    // const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-
-
                 const response = await fetch("http://localhost:8000/api/v1/schedules", {
                     method: "GET"
                 });
-
                 const data = await response.json();
-                console.log("data", data);
+                // console.log("data", data);
                 setData(data); // Set the data
             } catch (error) {
                 setError(error); // Handle any errors
             } finally {
-                setLoading(false); // Set loading to false
+                // setLoading(false); // Set loading to false
             }
         };
 
