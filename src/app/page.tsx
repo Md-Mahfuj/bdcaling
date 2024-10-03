@@ -12,6 +12,8 @@ export default function Home() {
   // Usage in a component
   useEffect(() => {
     const { isLoggedIn, role } = checkLoginStatus();
+
+    console.log("role",role);
     setIsLoggedIn(isLoggedIn);
     setIsAdmin(role === 'admin');
     setLoading(false);

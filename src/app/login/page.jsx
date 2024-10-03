@@ -27,9 +27,11 @@ export default function Login() {
     return true;
   };
 
-  // Function to check login status (check if JWT token exists in cookies)
+  // // Function to check login status (check if JWT token exists in cookies)
   const checkLoginStatus = () => {
     const token = document.cookie.split('; ').find(row => row.startsWith('token='));
+
+    console.log("token",token);
     if (token) {
       setIsLoggedIn(true);  // User is logged in
     } else {
