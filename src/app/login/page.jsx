@@ -69,7 +69,10 @@ export default function Login() {
 
         // Redirect to home or dashboard after login
         router.replace("/");
-        window.location.reload(); // Optionally reload the page
+        
+        if (typeof window !== 'undefined') {
+          window.location.reload();
+        }
 
         toast.dismiss(toastId);
         toast.success("Logged in successfully.");
@@ -87,11 +90,8 @@ export default function Login() {
 
   // If already logged in, redirect or show a message
   if (isLoggedIn) {
-    return (
-      <div className="flex justify-center items-center h-screen">
-        <p>You are already logged in!</p>
-      </div>
-    );
+    router.replace("/");
+
   }
 
   return (
