@@ -20,6 +20,7 @@ export default function Home() {
     const { isLoggedIn, role, id } = checkLoginStatus();
     setIsLoggedIn(isLoggedIn);
     setId(id);
+
     if (role === 'admin') {
       setIsAdmin(role === 'admin');
     }
@@ -58,8 +59,8 @@ export default function Home() {
           method: "GET"
         });
         const data = await response.json();
-        console.log("API response for trainer data:", data);
-        setTrainerData(Array.isArray(data) ? data : []);
+        // console.log("API response for trainer data:", data);
+        setTrainerData((data) ? data : []);
       } catch (error) {
         console.log(error);
       }
