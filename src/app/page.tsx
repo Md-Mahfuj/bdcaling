@@ -1,12 +1,18 @@
-
-
-
-
 "use client";
 import { useEffect, useState } from "react";
 import { checkLoginStatus } from "./Utility/authUtils";
 import Hero from "@/app/ui/hero";
 import toast, { Toaster } from 'react-hot-toast';
+
+// Define the Schedule interface
+interface Schedule {
+  _id: string; // Adjust types based on your API response
+  date: string;
+  timeSlot: string;
+  trainer: {
+    name: string;
+  };
+}
 
 export default function Home() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -16,16 +22,13 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
   const [id, setId] = useState<string | null>(''); // Initial value can be an empty string or null
 
-  const [data, setData] = useState([]);
-  const [trainerData, setTrainerData] = useState([]);
+  const [data, setData] = useState<Schedule[]>([]); // Set the type of data as Schedule[]
+  const [trainerData, setTrainerData] = useState<Schedule[]>([]); // Set the type of trainerData
 
-  // Usage in a component
   useEffect(() => {
     const { isLoggedIn, role, id } = checkLoginStatus();
     setIsLoggedIn(isLoggedIn);
-
-    // Ensure id is a string or set it to an empty string if undefined or null
-    setId(id || ''); 
+    setId(id || '');
 
     if (role === 'admin') {
       setIsAdmin(true);
@@ -145,7 +148,7 @@ export default function Home() {
                     <span className="relative mt-auto text-center text-xl font-bold text-white">Date: {item?.date}</span>
                     <span className="relative mt-auto text-center text-xl font-bold text-white">TimeSlot: {item?.timeSlot}</span>
                     <span className="relative mt-auto text-center text-xl font-bold text-white">Trainer: {item?.trainer?.name}</span>
-                    <div onClick={() => handelBook(item._id)} className=" mt-2 inline-flex items-center justify-center text-center rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 cursor-pointer">
+                    <div onClick={() => handelBook(item._id)} className="mt-2 inline-flex items-center justify-center text-center rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 cursor-pointer">
                       Book Now
                     </div>
                   </div>
