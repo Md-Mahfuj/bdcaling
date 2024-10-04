@@ -2,18 +2,24 @@
 "use client"
 import { useEffect, useState } from 'react';
 
-import Modal from "../ui/modal/modal"
+import Modal from "../ui/modal/DeleteModal"
+import TainarModal from "../ui/modal/modal"
 
 export default function Schedule() {
     const [open, setOpen] = useState(false)
+    const [updateUseruser, setUpdateUser] = useState(false)
+
+    const [idSend, setSend] = useState('');
+    const [DeleteID, setDeleteID] = useState('');
 
     const [data, setData] = useState([]);
+    const [trainerslist, setTrainerslist] = useState([]);
     // const [loading, setLoading] = useState(true);
     // const [error, setError] = useState(null);
 
 
-    const AddSchedul =()=>{
-        setOpen(true);
+    const AddSchedul = () => {
+        setUpdateUser(true);
     }
 
     useEffect(() => {
@@ -34,12 +40,56 @@ export default function Schedule() {
 
         fetchData(); // Call the fetch function
     }, []);
+
+
+
+
+  useEffect(() => {
+    const fetchData = async () => {
+        try {
+            const response = await fetch("http://localhost:8000/api/trainerslist", {
+                method: "GET",
+            });
+            const data = await response.json();
+            console.log("tainer list", data);
+            setTrainerslist(data); // Set the data
+        } catch (error) {
+            console.log(error);
+        } finally {
+            // setLoading(false); // Set loading to false
+        }
+    };
+
+    fetchData(); // Call the fetch function
+}, []);
+
+
+    const updateUser = (id) => {
+        setOpen(true)
+        setSend(id)
+    }
+    const DeleteScheUser = (id) => {
+        setOpen(true)
+        setDeleteID(id)
+    }
+
+    console.log("trainerslist ---",trainerslist)
     return (
         <div className="px-4 sm:px-6 lg:px-8 pt-24">
             <div className="sm:flex sm:items-center">
+                <TainarModal
+                    idSend={idSend}
+                    open={updateUseruser}
+                    setOpen={setUpdateUser}
+                    trainerslist={trainerslist}
+                />
+
                 <Modal
+
+                    idSend={DeleteID}
                     open={open}
                     setOpen={setOpen}
+
                 />
 
 
@@ -49,7 +99,7 @@ export default function Schedule() {
                 </div>
                 <div className="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
                     <button
-                       onClick={AddSchedul}
+                        onClick={AddSchedul}
                         type="button"
                         className="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                     >
@@ -108,9 +158,9 @@ export default function Schedule() {
                                                 <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{item.timeSlot}</td>
                                                 <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{item?.trainer?.name}</td>
                                                 <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                                                    <a href="#" className="text-indigo-600 hover:text-indigo-900">
-                                                        Edit<span className="sr-only">, { }</span>
-                                                    </a>
+                                                    <div onClick={() => DeleteScheUser(item._id)} className="text-indigo-600 hover:text-indigo-900">
+                                                        Delete<span className="sr-only">, { }</span>
+                                                    </div>
                                                 </td>
                                             </tr>
                                         )

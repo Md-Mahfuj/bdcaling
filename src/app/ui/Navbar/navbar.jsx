@@ -5,6 +5,7 @@ import { checkLoginStatus } from "../../Utility/authUtils";
 
 import TraineeProfile from "@/app/ui/Navbar/TraineeProfile"
 import AdminProfile from "@/app/ui/Navbar/AdminProfile"
+import TrainerProfile from "@/app/ui/Navbar/TrainerProfile"
 const WithoutLogin = () => {
   return (
     <a
@@ -29,11 +30,11 @@ export default function Navbar() {
   const [isAdmin, setIsAdmin] = useState(false);
   const [isTrainee, setIsTrainee] = useState(false);
   const [isTrainer, setIsTrainer] = useState(false);
-  const [name,setName]=useState('')
+  const [name, setName] = useState('')
 
   // Usage in a component
   useEffect(() => {
-    const { isLoggedIn, role,name } = checkLoginStatus();
+    const { isLoggedIn, role, name } = checkLoginStatus();
     setName(name)
     setIsLoggedIn(isLoggedIn);
     if (role === 'admin') {
@@ -73,51 +74,36 @@ export default function Navbar() {
                 isLoggedIn ? (
                   <div>
                     {
-                      isAdmin && 
+                      isAdmin &&
                       <div className='flex items-center bg-slate-400 px-2 rounded-md'>
-                        <AdminProfile/>
+                        <AdminProfile />
                         <h1 className='ml-2 text-white'>{name}</h1>
 
                       </div>
                     }
                     {
                       isTrainer &&
-                      <div>
-                      <h1 className='ml-2 text-white'>{name}</h1>
+                      <div className='flex items-center bg-slate-400 px-2 rounded-md'>
+                        <TrainerProfile/>
+                        <h1 className='ml-2 text-white'>{name}</h1>
 
                       </div>
                     }
                     {
                       isTrainee &&
                       <div className='flex items-center bg-slate-400 px-2 rounded-md'>
-                      <TraineeProfile />
-                      <h1 className='ml-2 text-white'>{name}</h1>
+                        <TraineeProfile />
+                        <h1 className='ml-2 text-white'>{name}</h1>
                       </div>
                     }
 
                   </div>
                 ) : <WithoutLogin />
               }
-
-
-
-
-              {/* {session?.user?.role=="user" ? <ProfileBar session={session} /> : ""}
-
-                {session?.user?.role=="admin" ? <ProfileBarAdmin session={session} /> : ""} */}
-
             </div>
           </div>
-
-
-
-
-
         </div>
-
-
       </>
-
     </div>
   )
 }
